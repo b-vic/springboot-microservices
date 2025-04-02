@@ -124,9 +124,15 @@ jdbc:h2:mem:productdb
 
 http://localhost:8082/h2-console/login.do
 
+**Postman Collections:**
 
-**TODO: **
+https://github.com/b-vic/springboot-microservices/tree/main/docs
+
+
+**TODO:**
 
 - Add Security
+- Add Unit Tests
+
 
 
