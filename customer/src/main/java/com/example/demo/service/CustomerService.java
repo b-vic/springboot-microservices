@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 @Service
 public class CustomerService {
 
-    private CustomerRepository customerRepository;
-    private RestTemplate restTemplate;
+    private final CustomerRepository customerRepository;
+    private final RestTemplate restTemplate;
 
     CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate) {
         this.customerRepository = customerRepository;
@@ -57,12 +57,9 @@ public class CustomerService {
         return saveCustomer(customerNew);
     }
 
-    public Optional<CustomerDto> getCustomerByName(String fullName) {
-        Optional<Customer> customer = customerRepository.findByFullName(fullName);
-        if (customer.isPresent()) {
-            return Optional.of(CustomerDto.fromEntity(customer.get()));
-        }
-        return Optional.empty();
+    public Optional<List<CustomerDto>> getCustomerByName(String firstName, String lastName) {
+        Optional<List<Customer>> customers = customerRepository.findByFirstNameAndLastName(firstName, lastName);
+        return customers.map(customerList -> customerList.stream().map(CustomerDto::fromEntity).toList());
     }
 
     @Transactional

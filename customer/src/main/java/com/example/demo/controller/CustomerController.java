@@ -60,12 +60,12 @@ public class CustomerController {
 
     @GetMapping("/name")
     @ResponseBody
-    public ResponseEntity<?> getByCustomerName(@RequestParam String fullName) {
-        Optional<CustomerDto> customer = customerService.getCustomerByName(fullName);
+    public ResponseEntity<?> getByCustomerName(@RequestParam String firstName, @RequestParam String lastName) {
+        Optional<List<CustomerDto>> customer = customerService.getCustomerByName(firstName, lastName);
         if (customer.isPresent()) {
             return new ResponseEntity<>(customer, HttpStatus.OK);
         }
-        return new ResponseEntity<>("No Customer Found",HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("No Customer Found", HttpStatus.NOT_FOUND);
     }
 
     @PutMapping

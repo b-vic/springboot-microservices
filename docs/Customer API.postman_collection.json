@@ -144,7 +144,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/customer/name?fullName=CustFirstCustLast",
+					"raw": "http://localhost:8080/customer/name?firstName=CustFirst&lastName=CustLast",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -156,8 +156,12 @@
 					],
 					"query": [
 						{
-							"key": "fullName",
-							"value": "CustFirstCustLast"
+							"key": "firstName",
+							"value": "CustFirst"
+						},
+						{
+							"key": "lastName",
+							"value": "CustLast"
 						}
 					]
 				}
