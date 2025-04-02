@@ -2,7 +2,7 @@
 
 Demonstration of how springboot applications can be deployed as microservices (e.g. see Customer API and Product API) using a Service Registry and an API Gateway. These would each be deployed on separate containers but can all be run locally here.  APIs could be scaled separately.
 
-![image](https://github.com/user-attachments/assets/674aa76d-8304-4b83-b33d-228f0d2660a7)
+![image](https://github.com/b-vic/springboot-microservices/blob/main/docs/microservice.png)
 
 
 ## service-registry: 
@@ -47,12 +47,12 @@ Now launch a separate window:
 
 **Browse the products:**
 
-curl 'http://localhost:8080/product/page?pageNumber=0&pageSize=5'
+`curl 'http://localhost:8080/product/page?pageNumber=0&pageSize=5'`
 
 
 **Create a new customer with a linked product:**
 
-curl --location 'http://localhost:8080/customer' \
+`curl --location 'http://localhost:8080/customer' \
 --header 'Content-Type: application/json' \
 --data '{
     "customerId": "CUST-140",
@@ -69,18 +69,18 @@ curl --location 'http://localhost:8080/customer' \
             "street": "123 Main"
         }
     ]
-}'
+}'`
 
 **Retrieve the customer and associated their products details:**
 
 Let's see Customer API call the Product API to fetch more information about the products:
 
-curl http://localhost:8080/customer/CUST-140/products
+`curl http://localhost:8080/customer/CUST-140/products`
 
 
 **Add an address to the customer:**
 
-curl --location --request PUT 'http://localhost:8080/customer' \
+`curl --location --request PUT 'http://localhost:8080/customer' \
 --header 'Content-Type: application/json' \
 --data '{
     "customerId": "CUST-140",
@@ -90,11 +90,11 @@ curl --location --request PUT 'http://localhost:8080/customer' \
             "street": "123 Front"
         }
     ]
-}'
+}'`
 
 **Add a product to the customer:**
 
-curl --location --request PUT 'http://localhost:8080/customer' \
+`curl --location --request PUT 'http://localhost:8080/customer' \
 --header 'Content-Type: application/json' \
 --data '{
     "customerId": "CUST-140",
@@ -103,26 +103,26 @@ curl --location --request PUT 'http://localhost:8080/customer' \
             "sku": "SAMPLE-100"
         }
     ]
-}'
+}'`
 
 **Create a new product:**
 
-curl --location 'http://localhost:8080/product' \
+`curl --location --request POST 'http://localhost:8080/product' \
 --header 'Content-Type: application/json' \
 --data '    {
         "sku": "SAMPLE-200",
         "name": "Sample 200",
         "description": "A sample product 200"
-    }'
+    }'`
 
 
 **Check the data in the database:**
 
-jdbc:h2:mem:customerdb
+`jdbc:h2:mem:customerdb`
 
 http://localhost:8081/h2-console/login.do
 
-jdbc:h2:mem:productdb
+`jdbc:h2:mem:productdb`
 
 http://localhost:8082/h2-console/login.do
 
