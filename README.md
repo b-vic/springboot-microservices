@@ -2,6 +2,8 @@
 
 Demonstration of how springboot applications can be deployed as microservices (e.g. see Customer API and Product API) using a Service Registry and an API Gateway. These would each be deployed on separate containers but can all be run locally here.  APIs could be scaled separately.
 
+![image](https://github.com/user-attachments/assets/674aa76d-8304-4b83-b33d-228f0d2660a7)
+
 
 ## service-registry: 
 
@@ -133,6 +135,7 @@ https://github.com/b-vic/springboot-microservices/tree/main/docs
 
 - Add Security
 - Add Unit Tests
+- Add Distributed Transaction
 
 
 
