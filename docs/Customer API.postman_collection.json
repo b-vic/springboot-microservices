@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "927391dd-8dc7-492f-9dde-69d555bc0b2b",
+		"name": "Customer API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43663548"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": \"CUST-140\",\r\n    \"firstName\": \"CustFirst\",\r\n    \"lastName\": \"CustLast\",\r\n    \"products\": [\r\n        {\r\n            \"sku\": \"SAMPLE-101\"\r\n        }\r\n    ],\r\n    \"address\": [\r\n        {\r\n            \"city\": \"London\",\r\n            \"street\": \"123 Main\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer Minimum",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": \"CUST-141\",\r\n    \"firstName\": \"CustFirst\",\r\n    \"lastName\": \"CustLast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer Duplicate",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": \"CUST-141\",\r\n    \"firstName\": \"CustFirst\",\r\n    \"lastName\": \"CustLast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customers by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/CUST-140",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"CUST-140"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customers by First & Last Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/name?fullName=CustFirstCustLast",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"name"
+					],
+					"query": [
+						{
+							"key": "fullName",
+							"value": "CustFirstCustLast"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer API calls Products API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/CUST-140/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"CUST-140",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer - Add Product",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": \"CUST-140\",\r\n    \"firstName\": \"CustFirst\",\r\n    \"lastName\": \"CustyLast\",\r\n    \"products\": [\r\n        {\r\n            \"sku\": \"SAMPLE-101\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer - Add Address",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": \"CUST-140\",\r\n    \"firstName\": \"CustFirst\",\r\n    \"lastName\": \"CustyLast\",\r\n    \"address\": [\r\n        {\r\n            \"city\": \"Toronto\",\r\n            \"street\": \"123 Front\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
