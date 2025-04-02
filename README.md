@@ -1,6 +1,6 @@
 # springboot-microservices
 
-Demonstration of how springboot can be orchestrated as microservices (e.g. Customer API and Product API) using a Service Registry and API Gateway.
+Demonstration of how springboot can be orchestrated as microservices (e.g. Customer API and Product API) using a Service Registry and an API Gateway.
 
 
 ## service-registry: 
@@ -110,4 +110,16 @@ curl --location 'http://localhost:8080/product' \
         "name": "Sample 200",
         "description": "A sample product 200"
     }'
+
+
+**Check the data in the database:**
+
+jdbc:h2:mem:customerdb
+
+http://localhost:8081/h2-console/login.do
+
+jdbc:h2:mem:productdb
+
+http://localhost:8082/h2-console/login.do
+
 
