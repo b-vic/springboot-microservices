@@ -52,8 +52,8 @@ Now launch a separate window:
 
 **Create a new customer with a linked product:**
 
-`curl --location 'http://localhost:8080/customer' \
---header 'Content-Type: application/json' \
+`curl --location 'http://localhost:8080/customer' 
+--header 'Content-Type: application/json' 
 --data '{
     "customerId": "CUST-140",
     "firstName": "CustFirst",
@@ -80,8 +80,8 @@ Let's see Customer API call the Product API to fetch more information about the 
 
 **Add an address to the customer:**
 
-`curl --location --request PUT 'http://localhost:8080/customer' \
---header 'Content-Type: application/json' \
+`curl --location --request PUT 'http://localhost:8080/customer' 
+--header 'Content-Type: application/json' 
 --data '{
     "customerId": "CUST-140",
     "address": [
@@ -94,8 +94,8 @@ Let's see Customer API call the Product API to fetch more information about the 
 
 **Add a product to the customer:**
 
-`curl --location --request PUT 'http://localhost:8080/customer' \
---header 'Content-Type: application/json' \
+`curl --location --request PUT 'http://localhost:8080/customer' 
+--header 'Content-Type: application/json' 
 --data '{
     "customerId": "CUST-140",
     "products": [
@@ -107,8 +107,8 @@ Let's see Customer API call the Product API to fetch more information about the 
 
 **Create a new product:**
 
-`curl --location --request POST 'http://localhost:8080/product' \
---header 'Content-Type: application/json' \
+`curl --location --request POST 'http://localhost:8080/product' 
+--header 'Content-Type: application/json' 
 --data '    {
         "sku": "SAMPLE-200",
         "name": "Sample 200",
