@@ -83,7 +83,6 @@ public class CustomerService {
             Customer c = customerRepository.save(custSearch.get());
             return Optional.of(CustomerDto.fromEntity(c));
         }
-        //TODO: handle update customer doesn't exist
         return Optional.empty();
     }
 }
