@@ -1,6 +1,6 @@
 # springboot-microservices
 
-Demonstration of how springboot can be orchestrated as microservices (e.g. Customer API and Product API) using a Service Registry and an API Gateway.
+Demonstration of how springboot applications can be deployed as microservices (e.g. see Customer API and Product API) using a Service Registry and an API Gateway. These would each be deployed on separate containers but can all be run locally here.  APIs could be scaled separately.
 
 
 ## service-registry: 
@@ -8,12 +8,12 @@ Demonstration of how springboot can be orchestrated as microservices (e.g. Custo
 Manages API services, their status / availability as well as their location(s)
 
 
-## customer: 
+## customer API: 
 
 Simple API to manage customer data, addresses as well as customers associated products (see http://localhost:8081/customer)
 
 
-## product: 
+## product API: 
 
 Simple API to manage a list of products (see http://localhost:8082/product)
 
@@ -38,7 +38,9 @@ java -jar ./customer/target/customer-0.0.1-SNAPSHOT.jar &
 java -jar ./product/target/product-0.0.1-SNAPSHOT.jar &
 
 
+
 Now launch a separate window:
+
 
 
 **Browse the products:**
@@ -121,5 +123,10 @@ http://localhost:8081/h2-console/login.do
 jdbc:h2:mem:productdb
 
 http://localhost:8082/h2-console/login.do
+
+
+**TODO: **
+
+- Add Security
 
 
