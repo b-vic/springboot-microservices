@@ -9,12 +9,20 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class ExceptionHandlerAdvice {
+
+    @ResponseStatus(HttpStatus.PRECONDITION_FAILED)
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public ProblemDetail handleCustomExceptionAlreadyExists(Exception ex) {
+        String message = "The entity requested already exists: " + ex.getMessage();
+        return ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(HttpStatus.PRECONDITION_FAILED.value()), "Please use another identifier");
+    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NoSuchElementException.class)

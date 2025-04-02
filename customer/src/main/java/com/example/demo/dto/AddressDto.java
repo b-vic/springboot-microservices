@@ -4,6 +4,7 @@ import com.example.demo.entity.Address;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,9 @@ public class AddressDto {
     }
 
     public static Set<Address> toEntity(Set<AddressDto> addressDto) {
+        if (addressDto == null) {
+            return Collections.emptySet();
+        }
         return addressDto.stream().map(a -> new Address(a.getAddressId(), a.getStreet(), a.getCity())).collect(Collectors.toSet());
     }
 

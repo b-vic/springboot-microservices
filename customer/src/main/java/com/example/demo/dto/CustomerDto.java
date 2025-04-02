@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,7 +38,7 @@ public class CustomerDto {
     @NotBlank(message = "Last name is mandatory")
     private String lastName;
 
-    private Set<Map<String,Object>> products;
+    private Set<Map<String,Object>> products = new HashSet<>();
 
     @JsonManagedReference //avoid recursive loop
     @JsonProperty("address")
