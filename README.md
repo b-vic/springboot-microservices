@@ -24,6 +24,10 @@ Simple API to manage a list of products (see http://localhost:8082/product)
 
 A reverse proxy that routes calls to APIs or between APIs (e.g. http://localhost:8080/customer OR http://localhost:8080/product)
 
+## app
+
+A quick UI in React to test the Gateway to API interactions (e.g. http://localhost:3000)
+
 
 ## Steps
 
@@ -39,16 +43,17 @@ java -jar ./customer/target/customer-0.0.1-SNAPSHOT.jar &
 
 java -jar ./product/target/product-0.0.1-SNAPSHOT.jar &
 
+Optionally start React UI from app folder 
 
-
-Now launch a separate window:
-
-
+_Now launch a separate window:_
 
 **Browse the products:**
 
 `curl 'http://localhost:8080/product/page?pageNumber=0&pageSize=5'`
 
+_or if you installed Node:_
+
+http://localhost:3000/products
 
 **Create a new customer with a linked product:**
 
