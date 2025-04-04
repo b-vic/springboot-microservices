@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 const ProductList = () => {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [cookies] = useCookies(['XSRF-TOKEN']);
 
     useEffect(() => {
         setLoading(true);
@@ -19,6 +21,21 @@ const ProductList = () => {
             })
     }, []);
 
+    const remove = async (id) => {
+        await fetch(`/product/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'X-XSRF-TOKEN': cookies['XSRF-TOKEN'],
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(() => {
+            let updatedProducts = [...products].filter(i => i.sku !== id);
+            setProducts(updatedProducts);
+        });
+    }
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -30,7 +47,8 @@ const ProductList = () => {
             <td style={{whiteSpace: 'nowrap'}}>{product.description}</td>
             <td>
                 <ButtonGroup>
-                    <Button size="sm" color="primary" tag={Link} to={"/product"}>Edit</Button>
+                    <Button size="sm" color="primary" tag={Link} to={"/products/" + product.sku}>Edit</Button>
+                    <Button size="sm" color="danger" onClick={() => remove(product.sku)}>Delete</Button>
                 </ButtonGroup>
             </td>
         </tr>
@@ -41,15 +59,15 @@ const ProductList = () => {
             <AppNavbar/>
             <Container fluid>
                 <div className="float-end">
-                    <Button color="success" tag={Link} to="/product">Add Product</Button>
+                    <Button color="success" tag={Link} to="/products/new">Add Product</Button>
                 </div>
                 <h3>Products</h3>
                 <Table className="mt-4">
                     <thead>
                     <tr>
-                        <th width="25%">SKU</th>
-                        <th width="25%">Name</th>
-                        <th width="25%">Description</th>
+                        <th width="33%">SKU</th>
+                        <th width="33%">Name</th>
+                        <th width="33%">Description</th>
                     </tr>
                     </thead>
                     <tbody>

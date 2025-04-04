@@ -13,9 +13,6 @@ const AppNavbar = () => {
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="justify-content-end" style={{width: "100%"}} navbar>
                     <NavItem>
-                        <NavLink href="https://github.com/b-vic/springboot-microservices">b-vic</NavLink>
-                    </NavItem>
-                    <NavItem>
                         <NavLink href="https://github.com/b-vic/springboot-microservices">GitHub</NavLink>
                     </NavItem>
                 </Nav>

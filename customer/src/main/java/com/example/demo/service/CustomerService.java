@@ -36,7 +36,7 @@ public class CustomerService {
 
         //Get all the customers product details:
         Set<String> customersProducts = customer.get().getProducts(); //cust prod relationship
-        Set<Map<String, Object>> productDetails = restTemplate.getForObject("http://PRODUCT-SERVICE/product/{products}", Set.class, customersProducts);
+        Set<Map<String, Object>> productDetails = restTemplate.getForObject("http://PRODUCT-SERVICE/product/search/{products}", Set.class, customersProducts);
         customerDto.setProducts(productDetails);
 
         return customerDto;
@@ -51,10 +51,16 @@ public class CustomerService {
         Customer customerNew = new Customer(customerDto.getCustomerId()
                 , customerDto.getFirstName()
                 , customerDto.getLastName());
-        //customerNew.setAddresses(AddressDto.toEntity(customerDto.getAddressDto()));
         customerNew.addAddresses(AddressDto.toEntity(customerDto.getAddressDto()));
-        customerNew.setProducts(customerDto.getProducts().stream().map(p -> p.get("sku").toString()).collect(Collectors.toSet()));
+        customerNew.setProducts(getProducts(customerDto));
         return saveCustomer(customerNew);
+    }
+
+    private static Set<String> getProducts(CustomerDto customerDto) {
+        if (customerDto.getProducts() == null) {
+            return null;
+        }
+        return customerDto.getProducts().stream().map(p -> p.get("sku").toString()).collect(Collectors.toSet());
     }
 
     public Optional<List<CustomerDto>> getCustomerByName(String firstName, String lastName) {
@@ -72,6 +78,8 @@ public class CustomerService {
     public Optional<CustomerDto> updateCustomer(CustomerDto customerDto) {
         Optional<Customer> custSearch = customerRepository.findByExtCustomerId(customerDto.getCustomerId());
         if (custSearch.isPresent()) {
+            custSearch.get().setFirstName(customerDto.getFirstName());
+            custSearch.get().setLastName(customerDto.getLastName());
             Set<AddressDto> addressDto = customerDto.getAddressDto();
             if (addressDto != null) {
                 custSearch.get().addAddresses(AddressDto.toEntity(addressDto));
@@ -84,5 +92,11 @@ public class CustomerService {
             return Optional.of(CustomerDto.fromEntity(c));
         }
         return Optional.empty();
+    }
+
+    @Transactional
+    public void deleteCustomer(String customerId) {
+        Optional<Customer> custSearch = customerRepository.findByExtCustomerId(customerId);
+        customerRepository.delete(custSearch.orElseThrow());
     }
 }

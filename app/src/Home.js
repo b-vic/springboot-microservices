@@ -9,9 +9,24 @@ const Home = () => {
         <div>
             <AppNavbar/>
             <Container fluid>
-                <Button color="link"><Link to="/customers">Manage Customers</Link></Button>
-                <br/>
-                <Button color="link"><Link to="/products">Manage Products</Link></Button>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="logo192.png" width="20px" height="20px"/>
+                        </td>
+                        <td>
+                            <Button color="link"><Link to="/customers">Manage Customers</Link></Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="logo192.png" width="20px" height="20px"/>
+                        </td>
+                        <td>
+                            <Button color="link"><Link to="/products">Manage Products</Link></Button>
+                        </td>
+                    </tr>
+                </table>
             </Container>
         </div>
     );

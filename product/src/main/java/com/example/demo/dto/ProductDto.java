@@ -28,8 +28,8 @@ public class ProductDto {
         ProductDto productDto = new ProductDto();
         productDto.setProductId(product.getId());
         productDto.setSku(product.getSku());
-        productDto.setDescription(product.getName());
-        productDto.setName(product.getDescription());
+        productDto.setName(product.getName());
+        productDto.setDescription(product.getDescription());
         return productDto;
     }
 
