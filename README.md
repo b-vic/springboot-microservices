@@ -1,6 +1,6 @@
 # springboot-microservices
 
-Demonstration of how springboot applications can be deployed as microservices (e.g. see Customer API and Product API) using a Service Registry and an API Gateway. These would each be deployed on separate containers but can all be run locally here.  APIs could be scaled separately.
+Learning how springboot applications can be deployed as microservices (e.g. see Customer API and Product API) using a Service Registry and an API Gateway. These could each be deployed on separate containers but can all be run locally as well.  APIs could be scaled independently.
 
 ![image](https://github.com/b-vic/springboot-microservices/blob/main/docs/microservice.png)
 
@@ -26,7 +26,7 @@ A reverse proxy that routes calls to APIs or between APIs (e.g. http://localhost
 
 ## app (ui)
 
-A quick UI in React to test the Gateway to API interactions (e.g. http://localhost:3000). Add, update, delete customers and products.
+Basic UI in React to test the Gateway to API interactions (e.g. http://localhost:3000). Add, update, delete customers and products.
 
 
 ## Steps
