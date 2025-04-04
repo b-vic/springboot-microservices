@@ -24,9 +24,9 @@ Simple API to manage a list of products (see http://localhost:8082/product)
 
 A reverse proxy that routes calls to APIs or between APIs (e.g. http://localhost:8080/customer OR http://localhost:8080/product)
 
-## app
+## app (ui)
 
-A quick UI in React to test the Gateway to API interactions (e.g. http://localhost:3000)
+A quick UI in React to test the Gateway to API interactions (e.g. http://localhost:3000). Add, update, delete customers and products.
 
 
 ## Steps
@@ -43,7 +43,7 @@ java -jar ./customer/target/customer-0.0.1-SNAPSHOT.jar &
 
 java -jar ./product/target/product-0.0.1-SNAPSHOT.jar &
 
-Optionally start React UI from app folder 
+Optionally start React UI from app (ui) folder 
 
 _Now launch a separate window:_
 
